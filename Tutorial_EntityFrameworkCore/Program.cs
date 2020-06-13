@@ -1,4 +1,5 @@
 ﻿using System;
+using Tutorial_EntityFrameworkCore.Models;
 
 namespace Tutorial_EntityFrameworkCore
 {
@@ -6,7 +7,18 @@ namespace Tutorial_EntityFrameworkCore
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using(var contexto = new Contexto())
+            {
+                var libro = new Libro()
+                {
+                    Titulo = "Padre rico, padre pobre",
+                    Autor = "Robert Kiyosaki",
+                    Genero = "Autoayuda"
+                };
+
+                contexto.Libro.Add(libro);
+                contexto.SaveChanges();
+            }
         }
     }
 }
