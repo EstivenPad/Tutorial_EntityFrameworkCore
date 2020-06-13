@@ -14,7 +14,7 @@ namespace Tutorial_EntityFrameworkCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=BibliotecaDB;Trusted_Connection=True;" )
+            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=BibliotecaDB;Trusted_Connection=True;");
         }
     }
 }
