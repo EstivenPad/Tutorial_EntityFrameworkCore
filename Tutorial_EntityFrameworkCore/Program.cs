@@ -21,17 +21,17 @@ namespace Tutorial_EntityFrameworkCore
 
             switch (opcion)
             {
-                case 0:
+                case 1:
                     CUD.CUD.Create();
                     Console.WriteLine("Libro agregado correctamente.");
                     break;
 
-                case 1:
+                case 2:
                     CUD.CUD.Update();
                     Console.WriteLine("Libro modificado correctamente.");
                     break;
 
-                case 2:
+                case 3:
                     CUD.CUD.Create();
                     Console.WriteLine("Libro eliminado correctamente.");
                     break;
