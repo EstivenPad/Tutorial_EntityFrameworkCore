@@ -10,8 +10,8 @@ using Tutorial_EntityFrameworkCore;
 namespace Tutorial_EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200613184837_OneToManyRelationshipMigration")]
-    partial class OneToManyRelationshipMigration
+    [Migration("20200613192410_DataAnnotationMigration")]
+    partial class DataAnnotationMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,16 +70,24 @@ namespace Tutorial_EntityFrameworkCore.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("FechaDevolucion")
+                        .HasColumnName("Fecha de devolucion")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaPrestamo")
+                        .HasColumnName("Fecha de prestamo")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("LibroId")
                         .HasColumnType("int");
 
                     b.HasKey("PrestamoId");
+
+                    b.HasIndex("ClienteId")
+                        .IsUnique();
 
                     b.HasIndex("LibroId");
 
@@ -88,6 +96,12 @@ namespace Tutorial_EntityFrameworkCore.Migrations
 
             modelBuilder.Entity("Tutorial_EntityFrameworkCore.Models.Prestamo", b =>
                 {
+                    b.HasOne("Tutorial_EntityFrameworkCore.Models.Cliente", "Cliente")
+                        .WithOne("Prestamo")
+                        .HasForeignKey("Tutorial_EntityFrameworkCore.Models.Prestamo", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Tutorial_EntityFrameworkCore.Models.Libro", "Libro")
                         .WithMany()
                         .HasForeignKey("LibroId")

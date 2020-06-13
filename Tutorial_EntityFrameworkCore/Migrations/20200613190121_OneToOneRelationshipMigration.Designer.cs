@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tutorial_EntityFrameworkCore;
 
 namespace Tutorial_EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(Contexto))]
-    partial class ContextoModelSnapshot : ModelSnapshot
+    [Migration("20200613190121_OneToOneRelationshipMigration")]
+    partial class OneToOneRelationshipMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,11 +74,9 @@ namespace Tutorial_EntityFrameworkCore.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaDevolucion")
-                        .HasColumnName("Fecha de devolucion")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("FechaPrestamo")
-                        .HasColumnName("Fecha de prestamo")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("LibroId")
